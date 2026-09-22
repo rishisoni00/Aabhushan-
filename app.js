@@ -40,6 +40,31 @@ let currentUser = {
   wishlist: [],
   orders: []
 };
+// Replace executeSureBooking in Customer app.js with this:
+function executeSureBooking() {
+  const halfReward = pendingBookingProduct.mudraReward / 2;
+  currentUser.mudraGold += halfReward;
+  
+  const newBooking = {
+    memberId: currentUser.memberId,
+    customerName: currentUser.name,
+    productName: pendingBookingProduct.name,
+    price: pendingBookingProduct.price,
+    mudraReward: pendingBookingProduct.mudraReward,
+    status: 'Pending',
+    timestamp: new Date().toISOString()
+  };
+
+  // Push into localStorage for Vendor connection
+  let currentRequests = JSON.parse(localStorage.getItem('customer_bookings')) || [];
+  currentRequests.unshift(newBooking);
+  localStorage.setItem('customer_bookings', JSON.stringify(currentRequests));
+
+  document.getElementById('checkoutStep1').style.display = 'none';
+  document.getElementById('checkoutStep2').style.display = 'block';
+
+  logDeveloperEvent(`BOOKING: User ${currentUser.memberId} requested ${pendingBookingProduct.name}. Sync sent to Vendor Dashboard.`);
+}
 
 // State to track developer analytics from TURN 1
 let developerLogs = [];
@@ -53,6 +78,8 @@ window.addEventListener('DOMContentLoaded', () => {
   // Setup display per Turn 1 logic
   displayProducts(products);
 });
+
+
 
 // Display Products
 function displayProducts(items) {
