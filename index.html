@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maa Ambe Jewellers | Royal Collection</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- No signup logic needed for now, clean state -->
+</head>
+<body>
+
+  <!-- Floating Welcome Component - image ke top black bar ke according -->
+  <div class="welcome-container">
+    <div class="welcome-badge">
+      <svg class="ladies-hands-svg" viewBox="0 0 64 64">
+        <path d="M32 10 C30 18, 22 28, 16 34 C12 38, 14 44, 20 44 C26 44, 30 36, 32 30 C34 36, 38 44, 44 44 C50 44, 52 38, 48 34 C42 28, 34 18, 32 10 Z" fill="#D4AF37"/>
+      </svg>
+      <span>Welcome to Maa Ambe Jewellers</span>
+    </div>
+  </div>
+
+  <!-- Active Buyers Header Bar - image ke according -->
+  <div class="active-buyers-header">
+    🔥 Live Shoppers: <span id="live-users">124</span> members exploring collections right now
+  </div>
+
+  <!-- Main App Shell -->
+  <div id="mainApp">
+    
+    <!-- Navbar - layout adjusted per image -->
+    <nav class="navbar">
+      <div class="nav-left">
+        <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
+        <div class="logo-box">
+          <svg viewBox="0 0 100 100" class="site-logo">
+            <circle cx="50" cy="50" r="42" stroke="darkgreen" stroke-width="4" fill="none"/>
+            <path d="M50 20 L80 80 L65 80 L50 48 L35 80 L20 80 Z" fill="#D4AF37"/>
+          </svg>
+          <span class="logo-text">AMBE ALANKAAR</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <select id="sortPrice" onchange="sortProducts()">
+          <option value="default">Sort by Price</option>
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+        </select>
+        
+        <button class="interactive-btn">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          Wishlist (<span id="wishlist-count">0</span>)
+        </button>
+
+        <button class="interactive-btn">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.02-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0020.01 4H4.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          Tray (<span id="tray-count">0</span>)
+        </button>
+      </div>
+    </nav>
+
+    <!-- Google Style Search Bar - position change per image -->
+    <div class="search-bar-section">
+      <div class="search-input-wrapper">
+        <svg class="search-icon-svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79h1.5l5.01 5.01-.49.49h-.99l5.01 5.01 1.41-1.41L19.92 21v-.99h.79l.49-.49.01-.01c0 0 0 0 0 0l-5.01-5.01zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" id="searchInput" placeholder="Search Gold, Diamond, Rings..." onkeyup="filterProducts()">
+      </div>
+    </div>
+
+    <!-- Main Content Container with correct wrapping -->
+    <div class="main-layout-container">
+        
+        <!-- Sliding Sidebar Overview (already fixed from last turn) -->
+        <aside id="sidebar" class="sidebar">
+          <div class="sidebar-header">
+            <h3>Customer Dashboard</h3>
+            <span class="close-sidebar" onclick="toggleSidebar()">&times;</span>
+          </div>
+          
+          <div class="sidebar-content">
+            <div class="user-profile-card">
+              <p><strong>Member ID:</strong> <span id="user-member-id">AUR-128756</span></p>
+              <p><strong>Name:</strong> <span id="sidebar-user-name">Rishi Sharma</span></p>
+            </div>
+
+            <div class="mudra-box option-btn-border">
+              <h4>Mudra Balance</h4>
+              <div class="mudra-details">
+                <span>Gold: <strong>150</strong></span>
+                <span>Silver: <strong>80</strong></span>
+              </div>
+            </div>
+
+            <ul class="sidebar-menu">
+              <li class="menu-option-btn"> 👤 Show My Details</li>
+              <li class="menu-option-btn">📦 My Orders</li>
+              <li class="menu-option-btn">💳 Payment & Checkout</li>
+              <li class="menu-option-btn" onclick="filterCategory('all')">🛍️ All Products</li>
+              <li class="menu-option-btn" onclick="filterCategory('men')">🕺 Men's Collection</li>
+              <li class="menu-option-btn" onclick="filterCategory('women')">💃 Women's Collection</li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Product section which JS will populate -->
+        <main class="container">
+          <div class="categories">
+            <button class="cat-btn" onclick="filterCategory('all')">All</button>
+            <button class="cat-btn" onclick="filterCategory('men')">Men</button>
+            <button class="cat-btn" onclick="filterCategory('women')">Women</button>
+          </div>
+
+          <!-- Developer Analytics Log from CSS -->
+          <div class="analytics-log-container">
+              <h4 style="color: #D4AF37; margin-bottom: 8px;">Developer Event Tracker</h4>
+              <div id="developerAnalyticsLog" class="developer-log-box"></div>
+          </div>
+
+          <section class="product-grid" id="productGrid"></section>
+        </main>
+
+    </div> <!-- End Main Layout Container -->
+
+    <!-- Bottom Ticker Line & Welcome Footer - text completed per image -->
+    <footer class="royal-footer">
+      <div class="ticker-wrap">
+        <div class="ticker">
+          ✨ Traditional Heritage Craftsmanship • Certified Pure 24K Gold • Handcrafted Diamond Jewelry • Exclusive Mudra Rewards on Every Purchase ✨
+        </div>
+      </div>
+      <div class="bottom-welcome">
+        <h2>WELCOME</h2>
+      </div>
+    </footer>
+
+    <!-- Meesho-style High Quality Zoom Modal -->
+    <div id="imageModal" class="modal">
+      <div class="modal-content img-modal-content">
+        <span class="close" onclick="closeImageModal()">&times;</span>
+        <div class="zoom-image-wrapper">
+          <img id="hdModalImage" src="" alt="HD Jewelry View">
+        </div>
+        <h3 id="hdModalTitle"></h3>
+        <p id="hdModalMudra" class="mudra-tag"></p>
+        <p id="hdModalPrice" class="price"></p>
+        <div class="modal-actions">
+          <button id="modalBookBtn" class="btn-gold-action">Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Modal from CSS -->
+    <div id="bookingCheckoutModal" class="modal">
+      <div class="modal-content checkout-modal-content">
+        <span class="close" onclick="closeCheckoutModal()">&times;</span>
+        <div id="checkoutStep1">
+          <h3>Confirm booking</h3>
+          <hr><br>
+          <p><strong>Item:</strong> <span id="checkoutProdName">--</span></p>
+          <p><strong>Price:</strong> <span id="checkoutProdPrice">--</span></p>
+          <p><strong>Instant Credit:</strong> <span id="checkoutMudraCredit">--</span> Mudra Gold</p>
+          <br>
+          <button class="btn-gold-action" onclick="executeSureBooking()">Sure Booking Request</button>
+        </div>
+        <div id="checkoutStep2" style="display:none; text-align:center;">
+          <div class="stylish-tick-circle">✓</div>
+          <h3>Product Request Sent!</h3>
+          <p>Developer server notification generated. Remaining balance will credit upon order verification.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D View Modal from CSS -->
+    <div id="3dModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="close3DModal()">&times;</span>
+        <h3>3D Interactive View</h3>
+        <div id="three-container"></div>
+      </div>
+    </div>
+
+  </div> <!-- End #mainApp -->
+
+  <script src="app.js"></script>
+</body>
+  </html>
+  
