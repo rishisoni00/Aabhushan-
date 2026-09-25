@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maa Ambe Jewellers - Vendor Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">🏬 Vendor Dashboard</div>
+    <div class="nav-right">
+      <span id="vendorMudraDisplay">Ambe Mudra Balance: --</span>
+      <button class="btn-switch" onclick="switchToCustomerPortal()">🔄 Switch to Customer Portal</button>
+      <button id="vendorAuthBtn" class="btn-primary" onclick="openVendorModal()">Vendor Profile</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Add Catalog Section -->
+    <section class="card" style="margin-bottom:20px;">
+      <h3>Add New Product to Catalog</h3>
+      <form onsubmit="handleAddCatalog(event)">
+        <input type="text" id="pName" placeholder="Product Name" required>
+        <input type="number" id="pPrice" placeholder="Price (₹)" required>
+        <input type="url" id="pImg" placeholder="Main Image URL" required>
+        <input type="url" id="p360" placeholder="360° View Image URL (Optional)">
+        <input type="number" id="pMudra" placeholder="Fix Ambe Mudra Reward" required>
+        <button type="submit" class="btn-primary">Add Product & Dedicate Mudra</button>
+      </form>
+    </section>
+
+    <!-- Booking Requests Section -->
+    <section class="card">
+      <h3>Incoming Customer Bookings</h3>
+      <div id="vendorBookingsTable"></div>
+    </section>
+  </main>
+
+  <!-- Vendor Auth Modal -->
+  <div id="vendorModal" class="modal">
+    <div class="modal-content">
+      <h3>Vendor Registration</h3>
+      <form onsubmit="handleVendorSignup(event)">
+        <input type="text" id="vName" placeholder="Full Name" required>
+        <input type="tel" id="vPhone" placeholder="Phone Number" required>
+        <input type="text" id="vZip" placeholder="ZIP Code" required>
+        <input type="text" id="vThana" placeholder="Thana Kshetra" required>
+        <input type="text" id="vShop" placeholder="Shop Name" required>
+        <input type="text" id="vOtp" placeholder="OTP (Use: 1234)" required>
+        <button type="submit" class="btn-primary">Register & Generate VEN ID</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="vendor-app.js"></script>
+</body>
+</html>
