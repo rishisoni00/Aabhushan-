@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maa Ambe Jewellers | Customer & Vendor Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Supabase JS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Three.js for 360/3D View -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Header Banner -->
+  <div class="welcome-container">
+    <div class="welcome-badge">
+      <span>✨ Maa Ambe Jewellers — Royal Collection & Vendor Hub</span>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
+      <div class="logo-box">
+        <span class="logo-text">AMBE ALANKAAR</span>
+      </div>
+    </div>
+
+    <!-- Mode/Portal Toggle Switch -->
+    <div class="portal-switch">
+      <button id="switchCustomerBtn" class="switch-btn active" onclick="switchPortal('customer')">Customer Mode</button>
+      <button id="switchVendorBtn" class="switch-btn" onclick="switchPortal('vendor')">Vendor Mode</button>
+    </div>
+
+    <div class="nav-actions">
+      <!-- Language Selector -->
+      <select id="languageSelect" onchange="changeLanguage(this.value)">
+        <option value="hi">हिंदी (Hindi)</option>
+        <option value="en">English</option>
+      </select>
+
+      <!-- Customer Actions -->
+      <div id="customerNavActions" class="nav-group">
+        <button class="interactive-btn" onclick="openSavedModal('wishlist')">
+          ❤️ Wishlist (<span id="wishlist-count">0</span>)
+        </button>
+        <button class="interactive-btn" onclick="openSavedModal('cart')">
+          🛒 Tray/Cart (<span id="tray-count">0</span>)
+        </button>
+      </div>
+
+      <!-- Auth Action Button -->
+      <button id="authTriggerBtn" class="btn-gold-action" onclick="openAuthModal()">Login / Register</button>
+    </div>
+  </nav>
+
+  <!-- Google Style Dedicated Sub-Header Search Bar (Customer Mode Only) -->
+  <div id="customerSearchBar" class="search-bar-section">
+    <div class="search-input-wrapper">
+      <input type="text" id="searchInput" placeholder="Search Gold, Diamond, Rings..." onkeyup="filterProducts()">
+    </div>
+  </div>
+
+  <!-- Main Layout Container -->
+  <div class="container">
+    
+    <!-- CUSTOMER PORTAL VIEW -->
+    <section id="customerPortal" class="portal-section active">
+      <div class="categories">
+        <button class="cat-btn" onclick="filterCategory('all')">All Collection</button>
+        <button class="cat-btn" onclick="filterCategory('men')">Men's Collection</button>
+        <button class="cat-btn" onclick="filterCategory('women')">Women's Collection</button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <!-- VENDOR PORTAL VIEW -->
+    <section id="vendorPortal" class="portal-section" style="display: none;">
+      <div class="vendor-dashboard">
+        <div class="vendor-header">
+          <h2>Vendor Management Studio</h2>
+          <p>Mudra Balance: <strong id="vendorMudraDisplay">300.00</strong> A.Mudra</p>
+        </div>
+
+        <div class="vendor-actions-bar">
+          <button class="btn-gold-action" onclick="openAddProductModal()">+ Add New Jewelry Product</button>
+        </div>
+
+        <h3 class="section-title">Pending Booking Requests</h3>
+        <div id="vendorBookingList" class="booking-list-container">
+          <!-- Dynamically populated vendor order requests -->
+        </div>
+
+        <h3 class="section-title">My Catalog Items</h3>
+        <div id="vendorCatalogGrid" class="product-grid"></div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Sliding Sidebar Navigation -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <h3 id="sidebarTitle">User Dashboard</h3>
+      <span class="close-sidebar" onclick="toggleSidebar()">&times;</span>
+    </div>
+    
+    <div class="sidebar-content">
+      <div class="user-profile-card">
+        <p><strong>Status:</strong> <span id="sidebarUserStatus">Not Logged In</span></p>
+        <p><strong>Member ID:</strong> <span id="sidebarMemberId">--</span></p>
+        <p><strong>Name:</strong> <span id="sidebarUserName">--</span></p>
+        <p><strong>Ambe Mudra:</strong> <span id="sidebarMudra">0</span> A.Mudra</p>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="menu-option-btn" onclick="showProfileModal()">👤 Account Details</li>
+        <li class="menu-option-btn" onclick="showCustomerOrdersModal()">📦 My Booking Requests</li>
+        <li class="menu-option-btn" onclick="handleSignOut()">🚪 Sign Out</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- AUTHENTICATION MODAL (OTP System) -->
+  <div id="authModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeAuthModal()">&times;</span>
+      <h3 id="authModalTitle">Sign In / Register</h3>
+      <hr><br>
+
+      <!-- Step 1: Phone Number & Role Input -->
+      <form id="authPhoneForm" onsubmit="handleSendOTP(event)">
+        <label>Select Account Type:</label>
+        <select id="authRoleSelect" style="width: 100%; padding: 8px; margin: 8px 0;">
+          <option value="customer">Customer</option>
+          <option value="vendor">Vendor</option>
+        </select>
+
+        <label>Phone Number:</label>
+        <input type="tel" id="authPhone" placeholder="+91 9876543210" required>
+        <button type="submit" class="btn-gold-action" style="width: 100%; margin-top: 10px;">Send OTP</button>
+      </form>
+
+      <!-- Step 2: OTP Entry -->
+      <form id="authOTPForm" style="display: none;" onsubmit="handleVerifyOTP(event)">
+        <label>Enter 6-Digit OTP:</label>
+        <input type="text" id="authOTP" placeholder="123456" required>
+        <button type="submit" class="btn-gold-action" style="width: 100%; margin-top: 10px;">Verify OTP</button>
+      </form>
+
+      <!-- Step 3: Registration Form (If First Time) -->
+      <form id="authRegisterForm" style="display: none;" onsubmit="handleCompleteRegistration(event)">
+        <h4>Complete Profile Setup</h4>
+        <input type="text" id="regFullName" placeholder="Full Name *" required>
+        <input type="email" id="regEmail" placeholder="Email Address (Optional)">
+        <input type="text" id="regZip" placeholder="Zip Code (Optional)">
+
+        <!-- Extra Vendor Fields -->
+        <div id="vendorExtraFields" style="display: none;">
+          <input type="text" id="regShopName" placeholder="Shop Name *">
+          <input type="text" id="regThaana" placeholder="Thaana Area *">
+        </div>
+
+        <button type="submit" class="btn-gold-action" style="width: 100%; margin-top: 10px;">Complete Registration</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADD PRODUCT MODAL (Vendor) -->
+  <div id="addProductModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeAddProductModal()">&times;</span>
+      <h3>Add New Catalog Item</h3>
+      <hr><br>
+      <form onsubmit="handleCreateProduct(event)">
+        <input type="text" id="prodName" placeholder="Product Name *" required>
+        <select id="prodCategory" style="width:100%; padding:8px; margin:8px 0;">
+          <option value="women">Women's Collection</option>
+          <option value="men">Men's Collection</option>
+        </select>
+        <input type="number" id="prodPrice" placeholder="Price (₹) *" required>
+        <input type="number" id="prodMudra" placeholder="Ambe Mudra Lock Amount (e.g. 30)">
+        <input type="url" id="prodImage" placeholder="Primary Image URL *" required>
+        
+        <button type="submit" class="btn-gold-action" style="width:100%; margin-top:10px;">Publish Product</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- VENDOR SHARE ORDER MODAL -->
+  <div id="shareOrderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeShareOrderModal()">&times;</span>
+      <h3>Share Booking With Vendor</h3>
+      <p style="font-size: 0.8rem; color: #aaa;">This action is hidden from the customer.</p>
+      <hr><br>
+      <label>Select Target Vendor:</label>
+      <select id="shareVendorSelect" style="width:100%; padding:8px; margin:10px 0;"></select>
+      <button class="btn-gold-action" onclick="executeShareOrder()" style="width:100%;">Share Booking</button>
+    </div>
+  </div>
+
+  <!-- SAVED ITEMS MODAL (Cart/Wishlist) -->
+  <div id="savedModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeSavedModal()">&times;</span>
+      <h3 id="savedModalTitle">Saved Items</h3>
+      <hr><br>
+      <div id="savedModalList"></div>
+    </div>
+  </div>
+
+  <!-- Audio element for booking sound -->
+  <audio id="bookingTune" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
+
+  <!-- Notification Toast -->
+  <div id="buyer-toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+  </html>
+  
