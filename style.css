@@ -1,0 +1,10 @@
+/* REALISTIC HD EFFECTS */
+.hero-text h1{text-shadow:0 2px 20px rgba(212,175,55,0.3)}
+.hero-img{filter:contrast(1.1) saturate(1.2); border-left:3px solid #D4AF37}
+.menubar::-webkit-scrollbar{display:none}
+.menubar a:hover{color:#D4AF37;transition:0.3s}
+.shop-btn{box-shadow:0 4px 15px rgba(255,153,51,0.4)}
+.shop-btn:active{transform:scale(0.96)}
+@media(min-width:768px){
+.hero-text h1{font-size:52px} .hero-text{width:55%} .menubar{gap:28px;font-size:15px}
+}
