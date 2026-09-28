@@ -1,0 +1,25 @@
+:root{--maroon:#5C0A2C;--maroon-dark:#3D071C;--maroon-light:#7A1A3A;--gold:#D4AF37;--emerald:#0B6B3A;--saffron:#FF9933;--cream:#FFFBF0;--white:#FFF;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;}
+body{background:var(--cream);border:4px solid var(--gold);}
+.top-header{background:var(--maroon);color:var(--gold);display:flex;justify-content:space-between;padding:14px 24px;align-items:center;border-bottom:2px solid var(--gold);}
+.logo{font-size:24px;font-weight:700;letter-spacing:1px;}
+.logo span{display:block;font-size:11px;color:var(--cream);letter-spacing:2px;}
+.vendor-info{font-size:13px;color:var(--cream);}
+.vendor-info a{background:var(--gold);color:var(--maroon);padding:5px 10px;border-radius:14px;text-decoration:none;margin-left:10px;font-weight:700;}
+.layout{display:flex;min-height:80vh;}
+.sidebar{width:230px;background:var(--maroon-dark);padding-top:20px;display:flex;flex-direction:column;gap:2px;}
+.sidebar a{padding:14px 18px;color:var(--cream);font-size:14px;border-left:4px solid transparent;cursor:pointer;}
+.sidebar a.active{border-left:4px solid var(--gold);color:var(--gold);background:var(--maroon-light);}
+.sidebar a.selected{background:var(--saffron);color:var(--white);font-weight:700;}
+.main{flex:1;padding:20px;display:flex;flex-direction:column;gap:18px;background:var(--cream);}
+.login-card,.form-card{background:var(--white);border:1.5px solid var(--gold);border-radius:14px;padding:18px;}
+.login-card h3,.form-card h3{color:var(--maroon);}
+.row{display:flex;gap:12px;margin:10px 0;}
+.row div{flex:1;}
+input{width:100%;padding:10px;border:1px solid var(--gold);border-radius:8px;background:var(--cream);margin:6px 0;}
+label{font-size:13px;color:var(--maroon);font-weight:600;margin-top:10px;display:block;}
+.upload{border:1.5px dashed var(--gold);background:#FFF8E7;padding:18px;text-align:center;border-radius:10px;color:var(--maroon);margin:10px 0;}
+.btn-login{background:var(--saffron);color:#fff;border:none;padding:10px 0;width:100%;border-radius:20px;margin-top:10px;font-weight:700;cursor:pointer;}
+.btn-row{display:flex;gap:12px;margin-top:12px;}
+.btn-cancel{flex:1;background:var(--white);border:1px solid var(--maroon);color:var(--maroon);padding:10px;border-radius:20px;}
+.btn-add{flex:1;background:var(--saffron);color:#fff;border:none;padding:10px;border-radius:20px;font-weight:700;}
