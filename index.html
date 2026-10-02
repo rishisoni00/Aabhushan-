@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Jewels - Mobile App Portal</title>
+    <style>
+        :root {
+            --cream-bg: #FDFBF7;
+            --emerald-green: #0A3C2F;
+            --white: #FFFFFF;
+            --golden: #D4AF37;
+            --kesariya: #E67E22;
+            --maroon: #5B0E2D;
+            --neon-green: #39FF14;
+            --neon-gold: #FFD700;
+            --neon-cyan: #00F0FF;
+            --soft-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        /* Smartphone Frame Container */
+        .phone-mockup {
+            width: 380px;
+            height: 800px;
+            background-color: var(--cream-bg);
+            border-radius: 44px;
+            border: 12px solid #222;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Top Notch / Status Bar */
+        .status-bar {
+            background-color: var(--emerald-green);
+            color: var(--cream-bg);
+            padding: 12px 20px 6px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        /* App Header */
+        header {
+            background-color: var(--emerald-green);
+            color: var(--cream-bg);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--golden);
+            z-index: 10;
+        }
+
+        .brand-logo {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--golden);
+            letter-spacing: 1.5px;
+        }
+
+        .portal-badge {
+            background: var(--maroon);
+            color: var(--neon-gold);
+            border: 1px solid var(--golden);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        /* Scrollable Main Content Area */
+        .content-body {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 20px;
+            scroll-behavior: smooth;
+        }
+
+        /* Dynamic Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--maroon), var(--emerald-green));
+            color: var(--cream-bg);
+            padding: 20px 16px;
+            text-align: center;
+            border-bottom: 3px solid var(--kesariya);
+            position: relative;
+        }
+
+        .hero-banner h2 {
+            font-size: 18px;
+            color: var(--neon-gold);
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+            margin-bottom: 4px;
+        }
+
+        .hero-banner p {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        /* Component Titles */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 16px 8px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--maroon);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .view-all {
+            font-size: 11px;
+            color: var(--kesariya);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Grid Layout for Products / Dashboard Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 0 16px;
+        }
+
+        .card {
+            background-color: var(--white);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: var(--soft-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 110px;
+            background-color: var(--cream-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            margin-bottom: 8px;
+            border: 1px dashed var(--golden);
+        }
+
+        .card-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--emerald-green);
+            margin-bottom: 4px;
+        }
+
+        .card-price {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 8px;
+        }
+
+        /* Buttons */
+        .btn {
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            transition: transform 0.1s ease;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-kesariya {
+            background-color: var(--kesariya);
+            color: var(--white);
+            box-shadow: 0 0 8px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn-neon {
+            background-color: var(--emerald-green);
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 6px rgba(57, 255, 20, 0.4);
+        }
+
+        /* Vendor Specific Stats Cards */
+        .stat-card {
+            background: var(--white);
+            border-left: 4px solid var(--kesariya);
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: var(--soft-shadow);
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--emerald-green);
+            margin-top: 4px;
+        }
+
+        /* Bottom Tab Navigation Bar */
+        .bottom-nav {
+            background-color: var(--emerald-green);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 14px;
+            border-top: 2px solid var(--golden);
+            z-index: 10;
+        }
+
+        .nav-tab {
+            color: rgba(253, 251, 247, 0.7);
+            text-align: center;
+            font-size: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .nav-tab.active {
+            color: var(--neon-gold);
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+            font-weight: 700;
+        }
+
+        .nav-icon {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-mockup">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span>09:41</span>
+            <span>AURA 5G 🔋</span>
+        </div>
+
+        <!-- Header -->
+        <header>
+            <div class="brand-logo">AURA JEWELS</div>
+            <button class="portal-badge" id="switchBtn" onclick="switchPortal()">Switch to Vendor</button>
+        </header>
+
+        <!-- Main Dynamic View Area -->
+        <div class="content-body" id="mainContent">
+            <!-- Default Content: Customer View Loaded via JS -->
+        </div>
+
+        <!-- Bottom Navigation Tabs -->
+        <div class="bottom-nav" id="bottomNav">
+            <!-- Tabs render dynamically according to active portal -->
+        </div>
+    </div>
+
+    <script>
+        // App State Management
+        let currentPortal = 'customer'; // 'customer' or 'vendor'
+        let currentTab = 'home';
+
+        // Sample Data Sets
+        const customerProducts = [
+            { id: 1, name: 'Emerald Solitaire Ring', price: '₹48,500', icon: '💍' },
+            { id: 2, name: 'Royal Gold Necklace', price: '₹1,25,000', icon: '📿' },
+            { id: 3, name: 'Kundan Drop Earrings', price: '₹32,000', icon: '💎' },
+            { id: 4, name: 'Golden Cuff Bangle', price: '₹64,000', icon: '✨' }
+        ];
+
+        const vendorStats = [
+            { title: 'Total Sales', value: '₹4,85,000', label: '128 Orders' },
+            { title: 'Pending Orders', value: '14 Items', label: 'Processing' },
+            { title: 'Low Stock Alert', value: '3 Items', label: 'Replenish' },
+            { title: 'Vendor Rating', value: '4.9 ★', label: 'Top Rated' }
+        ];
+
+        // Portal Switch Function
+        function switchPortal() {
+            currentPortal = (currentPortal === 'customer') ? 'vendor' : 'customer';
+            currentTab = 'home';
+            document.getElementById('switchBtn').innerText = 
+                (currentPortal === 'customer') ? 'Switch to Vendor' : 'Switch to Customer';
+            renderApp();
+        }
+
+        // Tab Navigation Function
+        function setTab(tabName) {
+            currentTab = tabName;
+            renderApp();
+        }
+
+        // Render Application Dynamic UI
+        function renderApp() {
+            const contentArea = document.getElementById('mainContent');
+            const navArea = document.getElementById('bottomNav');
+
+            if (currentPortal === 'customer') {
+                renderCustomerView(contentArea);
+                renderCustomerNav(navArea);
+            } else {
+                renderVendorView(contentArea);
+                renderVendorNav(navArea);
+            }
+        }
+
+        // Render Customer Interface
+        function renderCustomerView(container) {
+            if (currentTab === 'home') {
+                container.innerHTML = `
+                    <div class="hero-banner">
+                        <h2>HERITAGE EMERALD</h2>
+                        <p>Royal Collection in Gold, Maroon & Emerald</p>
+                    </div>
+                    <div class="section-header">
+                        <span class="section-title">Trending Pieces</span>
+                        <a href="#" class="view-all" onclick="setTab('catalog')">View All</a>
+                    </div>
+                    <div class="grid-container">
+                        ${customerProducts.map(p => `
+                            <div class="card">
+                                <div class="card-img">${p.icon}</div>
+                                <div>
+                                    <div class="card-title">${p.name}</div>
+                                    <div class="card-price">${p.price}</div>
+                                </div>
+                                <button class="btn btn-kesariya" onclick="alert('Added ${p.name} to cart!')">Buy Now</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else if (currentTab === 'catalog') {
+                container.innerHTML = `
+                    <div class="section-header">
+                        <span class="section-title">Full Product Catalog</span>
+                    </div>
+                    <div class="grid-container">
+                        ${customerProducts.map(p => `
+                            <div class="card">
+                                <div class="card-img">${p.icon}</div>
+                                <div class="card-title">${p.name}</div>
+                                <div class="card-price">${p.price}</div>
+                                <button class="btn btn-neon" onclick="alert('Viewing specs for ${p.name}')">View Details</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div style="padding: 40px; text-align: center; color: var(--maroon);">
+                        <h3>${currentTab.toUpperCase()} PAGE</h3>
+                        <p style="font-size: 12px; margin-top: 8px;">Section under maintenance.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Render Vendor Interface
+        function renderVendorView(container) {
+            if (currentTab === 'home') {
+                container.innerHTML = `
+                    <div class="hero-banner" style="background: linear-gradient(135deg, var(--emerald-green), #000);">
+                        <h2 style="color:var(--neon-green);">VENDOR DASHBOARD</h2>
+                        <p>Sales, Analytics & Orders Portal</p>
+                    </div>
+                    <div class="section-header">
+                        <span class="section-title">Performance Metrics</span>
+                    </div>
+                    <div class="grid-container">
+                        ${vendorStats.map(s => `
+                            <div class="stat-card">
+                                <div style="font-size: 11px; color: var(--maroon); font-weight:700;">${s.title}</div>
+                                <div class="stat-value">${s.value}</div>
+                                <div style="font-size: 10px; color: var(--kesariya); margin-top:2px;">${s.label}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div style="padding: 40px; text-align: center; color: var(--emerald-green);">
+                        <h3>VENDOR ${currentTab.toUpperCase()}</h3>
+                        <p style="font-size: 12px; margin-top: 8px;">Order management portal loaded.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Render Customer Bottom Navigation
+        function renderCustomerNav(container) {
+            container.innerHTML = `
+                <div class="nav-tab ${currentTab === 'home' ? 'active' : ''}" onclick="setTab('home')">
+                    <span class="nav-icon">🏠</span>Home
+                </div>
+                <div class="nav-tab ${currentTab === 'catalog' ? 'active' : ''}" onclick="setTab('catalog')">
+                    <span class="nav-icon">🛍️</span>Shop
+                </div>
+                <div class="nav-tab ${currentTab === 'cart' ? 'active' : ''}" onclick="setTab('cart')">
+                    <span class="nav-icon">🛒</span>Cart
+                </div>
+                <div class="nav-tab ${currentTab === 'profile' ? 'active' : ''}" onclick="setTab('profile')">
+                    <span class="nav-icon">👤</span>Profile
+                </div>
+            `;
+        }
+
+        // Render Vendor Bottom Navigation
+        function renderVendorNav(container) {
+            container.innerHTML = `
+                <div class="nav-tab ${currentTab === 'home' ? 'active' : ''}" onclick="setTab('home')">
+                    <span class="nav-icon">📊</span>Metrics
+                </div>
+                <div class="nav-tab ${currentTab === 'orders' ? 'active' : ''}" onclick="setTab('orders')">
+                    <span class="nav-icon">📦</span>Orders
+                </div>
+                <div class="nav-tab ${currentTab === 'inventory' ? 'active' : ''}" onclick="setTab('inventory')">
+                    <span class="nav-icon">💍</span>Inventory
+                </div>
+            `;
+        }
+
+        // Initial App Load
+        renderApp();
+    </script>
+</body>
+</html>
