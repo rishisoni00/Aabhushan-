@@ -1,1 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maa Ambe Jewellers</title>
+    <meta name="description" content="Maa Ambe Jewellers - Premium festive jewellery storefront" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              cinzel: ['Cinzel', 'serif'],
+              inter: ['Inter', 'sans-serif'],
+              display: ['"Cinzel Decorative"', 'cursive'],
+            },
+            boxShadow: {
+              pearl: '0 12px 30px rgba(92, 10, 20, 0.12)',
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+      :root {
+        --primary: #5c0a14;
+        --secondary: #0a5c36;
+        --accent: #ff9933;
+        --cream: #fdf6ec;
+        --white: #ffffff;
+        --pearl: #f5efe8;
+        --border: rgba(92, 10, 20, 0.08);
+        --header-gradient: linear-gradient(90deg, #5c0a14 0%, #0a5c36 25%, #ff9933 50%, #fdf6ec 75%, #ffffff 100%);
+      }
 
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: 'Inter', sans-serif;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(255,255,255,.9), rgba(255,255,255,0) 30%),
+          radial-gradient(circle at 80% 10%, rgba(255,153,51,.18), rgba(255,153,51,0) 20%),
+          linear-gradient(135deg, #fffdf9 0%, #f5efe8 22%, #f0d9c3 100%);
+        color: #1f2937;
+      }
+
+      .pearl-bg {
+        background:
+          radial-gradient(circle at 25% 25%, rgba(255,255,255,0.9), rgba(255,255,255,0) 20%),
+          radial-gradient(circle at 60% 40%, rgba(255,255,255,0.7), rgba(255,255,255,0) 25%),
+          linear-gradient(180deg, rgba(255,255,255,.9), rgba(245,239,232,.92));
+      }
+
+      .pearl-card {
+        background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
+        border: 1px solid rgba(255,255,255,0.7);
+        box-shadow: 0 12px 32px rgba(92, 10, 20, 0.06);
+        backdrop-filter: blur(16px);
+      }
+
+      .festive-header {
+        background: var(--header-gradient);
+      }
+
+      .festive-maroon { --primary: #5c0a14; --secondary: #0a5c36; --accent: #ff9933; --header-gradient: linear-gradient(90deg, #5c0a14 0%, #0a5c36 25%, #ff9933 50%, #fdf6ec 75%, #ffffff 100%); }
+      .festive-emerald { --primary: #0a5c36; --secondary: #1b7a4c; --accent: #f2c14e; --header-gradient: linear-gradient(90deg, #0a5c36 0%, #3d7d5d 25%, #c4b16d 50%, #fdf6ec 75%, #ffffff 100%); }
+      .festive-saffron { --primary: #b35c00; --secondary: #7b2f00; --accent: #ff9933; --header-gradient: linear-gradient(90deg, #7b2f00 0%, #d97a00 30%, #ff9933 52%, #fff4e6 75%, #fff 100%); }
+      .festive-cream { --primary: #7a4d2a; --secondary: #765a3a; --accent: #d6b070; --header-gradient: linear-gradient(90deg, #fdf6ec 0%, #f7e5d1 30%, #d6b070 50%, #7a4d2a 75%, #fff 100%); }
+      .festive-white { --primary: #232526; --secondary: #505b5d; --accent: #d9c6a6; --header-gradient: linear-gradient(90deg, #f9fafb 0%, #e5e7eb 30%, #d6d3d1 50%, #c7b89d 75%, #ffffff 100%); }
+      .festive-bluestone { --primary: #2b5f8a; --secondary: #0f2d4d; --accent: #90cbf5; --header-gradient: linear-gradient(90deg, #e8f2f8 0%, #bfe0f5 30%, #6aa4c8 60%, #2b5f8a 100%); }
+
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      .logo-glow {
+        filter: drop-shadow(0 0 18px rgba(255, 217, 138, .7));
+      }
+      .ambe-mudra {
+        background: conic-gradient(from 120deg, #f7d97f, #d9a441, #fffbe8, #d9a441, #f7d97f);
+        box-shadow: inset 0 0 24px rgba(255,255,255,.7), 0 10px 24px rgba(92,10,20,.12);
+      }
+      .shimmerVendor {
+        animation: shimmer 3s infinite linear, pulse 2.4s infinite alternate;
+        background-size: 200% auto;
+      }
+      @keyframes shimmer {
+        0% { background-position: 200% center; }
+        100% { background-position: -200% center; }
+      }
+      @keyframes pulse {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-1px); }
+        100% { transform: translateY(0px); }
+      }
+      .hidden { display: none !important; }
+      .glass {
+        background: rgba(255,255,255,0.68);
+        backdrop-filter: blur(12px);
+      }
+      .premium-tag {
+        background: linear-gradient(135deg, #5c0a14 0%, #8f2d22 100%);
+      }
+      .comm-badge {
+        background: rgba(92,10,20,0.08);
+        color: var(--primary);
+      }
+      .cart-badge {
+        position: absolute; right: -4px; top: -7px; min-width: 18px; height: 18px; border-radius: 9999px;
+        background: var(--primary); color: white; font-size: 10px; display: grid; place-items: center;
+      }
+      .invalid { border-color: #ef4444 !important; }
+      .tab-active { background: linear-gradient(135deg, rgba(92,10,20,.08), rgba(12,92,54,.08)); border-color: rgba(92,10,20,.2); }
+      .menu-pill {
+        border: 1px solid rgba(200,169,92,.46);
+        background: rgba(255,255,255,.16);
+      }
+      .menu-pill:hover { background: rgba(253,246,236,.3); }
+      .floating-card {
+        animation: floaty 3.2s ease-in-out infinite;
+      }
+      @keyframes floaty {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-6px); }
+      }
+      .product-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+      .product-card:hover { transform: translateY(-2px); box-shadow: 0 18px 30px rgba(92,10,20,0.12); }
+    </style>
+  </head>
+  <body class="pearl-bg text-slate-800">
+    <div id="app-shell" class="min-h-screen">
+      <header id="festiveHeader" class="festive-header text-white shadow-md sticky top-0 z-40">
+        <div class="mx-auto max-w-[1600px] px-4 py-3">
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <div class="flex items-center gap-3 cursor-pointer" id="logoTouch" title="Reload page">
+              <div class="logo-glow w-16 h-16 rounded-full border-2 border-yellow-300/80 ambe-mudra flex items-center justify-center shadow-lg">
+                <div class="w-10 h-10 rounded-full border border-white/80 bg-white/15 flex items-center justify-center text-xl font-black text-[#5c0a14]">ॐ</div>
+              </div>
+              <div class="font-display leading-none">
+                <div class="text-lg md:text-xl font-black tracking-[0.18em] uppercase">Maa Ambe</div>
+                <div class="text-[10px] md:text-xs tracking-[0.38em] uppercase text-[#fff7e4]">Jewellers</div>
+              </div>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-2 flex-wrap justify-center">
+              <button class="menu-pill px-4 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wide text-white/95 no-scrollbar">All Jewellery</button>
+              <button class="menu-pill px-4 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wide text-white/95 no-scrollbar">Necklace</button>
+              <button class="menu-pill px-4 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wide text-white/95 no-scrollbar">Ring</button>
+              <button class="menu-pill px-4 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wide text-white/95 no-scrollbar">Nosepin</button>
+              <button class="menu-pill px-4 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wide text-white/95 no-scrollbar">Earrings</button>
+              <button class="menu-pill px-4 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wide text-white/95 no-scrollbar">Belt</button>
+              <button class="menu-pill px-4 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wide text-white/95 no-scrollbar">Wedding Sets</button>
+              <button class="menu-pill px-4 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wide text-white/95 no-scrollbar">Visit Store</button>
+            </div>
+
+            <div class="flex items-center gap-2 md:gap-3 ml-auto">
+              <button id="wishlistBtn" class="relative p-2.5 rounded-full bg-white/10 border border-white/25 text-white hover:bg-white/20">
+                <i class="fa-regular fa-heart"></i>
+                <span id="wishlistCount" class="cart-badge hidden">0</span>
+              </button>
+              <button id="cartBtn" class="relative p-2.5 rounded-full bg-white/10 border border-white/25 text-white hover:bg-white/20">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="trayCount" class="cart-badge">0</span>
+              </button>
+              <button id="profileBtn" class="px-3 md:px-4 py-2 rounded-full bg-white/12 border border-white/25 text-sm font-semibold text-white hover:bg-white/20">Profile</button>
+              <button id="adminBtn" class="px-3 md:px-4 py-2 rounded-full bg-[#fdf6ec] text-[#5c0a14] font-semibold text-sm shadow-sm hover:opacity-95">Admin</button>
+            </div>
+          </div>
+
+          <div class="mt-3 overflow-x-auto no-scrollbar">
+            <div class="flex gap-2 min-w-max pb-2">
+              <button class="category-btn menu-pill active px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="all">All Jewellery</button>
+              <button class="category-btn menu-pill px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="necklace">हार Necklace</button>
+              <button class="category-btn menu-pill px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="ring">Ring</button>
+              <button class="category-btn menu-pill px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="nospin">कील नथिया</button>
+              <button class="category-btn menu-pill px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="earrings">झुमके</button>
+              <button class="category-btn menu-pill px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="belt">Belt</button>
+              <button class="category-btn menu-pill px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="wedding">Wedding Sets</button>
+              <button class="category-btn menu-pill px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="chain">Chain</button>
+              <button class="category-btn menu-pill px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="bangle">Kangan</button>
+              <button class="category-btn menu-pill px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="mangalsutra">MangalSutra</button>
+              <button class="category-btn menu-pill px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="pearl">Pearl</button>
+              <button class="category-btn menu-pill px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wide text-white" data-cat="diamond">Diamond</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="mx-auto max-w-[1600px] px-4 py-6">
+        <section class="grid lg:grid-cols-[1.3fr_0.7fr] gap-6 items-stretch">
+          <div class="pearl-card rounded-[32px] p-6 md:p-8 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-70" style="background: radial-gradient(circle at 15% 20%, rgba(255,153,51,.20), rgba(255,255,255,0) 22%), radial-gradient(circle at 80% 30%, rgba(10,92,54,.15), rgba(255,255,255,0) 25%);"></div>
+            <div class="relative z-10">
+              <div class="inline-flex items-center gap-2 rounded-full bg-[#fff1d6] border border-[#d9b36e] text-[#5c0a14] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em]">
+                <i class="fa-solid fa-award"></i>
+                BIS Hallmarked Certified Diamonds
+              </div>
+              <h1 class="mt-4 font-display text-4xl md:text-6xl leading-tight text-[#5c0a14]">Trust Purity Forever</h1>
+              <p class="mt-4 max-w-xl text-base md:text-lg text-slate-700">Handcrafted bridal jewellery, festival heirlooms, and premium diamond gold sets curated for every celebration.</p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <button id="becomeVendorBtn" class="shimmerVendor rounded-full px-6 py-3 text-sm font-black uppercase tracking-[0.16em] text-white shadow-lg bg-gradient-to-r from-[#5c0a14] via-[#0a5c36] via-[#ff9933] to-[#fdf6ec]">Become a Vendor</button>
+                <button id="customerBtn" class="rounded-full border border-[#c8a95c] bg-white/80 px-6 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[#5c0a14] shadow-sm">Become Customer</button>
+              </div>
+              <div class="mt-8 flex flex-wrap items-center gap-5 text-sm font-semibold text-slate-700">
+                <div><span class="text-2xl font-black text-[#0a5c36]">10000+</span><div>Curated Pieces</div></div>
+                <div><span class="text-2xl font-black text-[#5c0a14]">2.5k</span><div>Happy Families</div></div>
+                <div><span class="text-2xl font-black text-[#ff9933]">48h</span><div>Delivery</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pearl-card rounded-[32px] p-5 relative overflow-hidden flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <div class="text-[11px] uppercase tracking-[0.24em] text-[#5c0a14] font-bold">Festival rate update</div>
+                <h3 id="festiveText" class="font-display text-2xl text-[#0a5c36] mt-1">Ekadashi Special</h3>
+              </div>
+              <div class="h-14 w-14 rounded-full bg-gradient-to-br from-[#fdf6ec] to-[#d9b16f] border border-[#c8a95c] flex items-center justify-center text-2xl shadow-sm">✦</div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-[#fffaf2] border border-[#f1d697] p-4">
+                <div class="text-[10px] uppercase tracking-[0.22em] text-slate-500">Gold</div>
+                <div class="text-3xl font-black mt-2 text-[#5c0a14]">₹ 6,680</div>
+              </div>
+              <div class="rounded-2xl bg-[#ecf9f0] border border-[#a8d4bb] p-4">
+                <div class="text-[10px] uppercase tracking-[0.22em] text-slate-500">Diamond</div>
+                <div class="text-3xl font-black mt-2 text-[#0a5c36]">₹ 12,240</div>
+              </div>
+              <div class="rounded-2xl bg-[#fff8ef] border border-[#f8d3af] p-4">
+                <div class="text-[10px] uppercase tracking-[0.22em] text-slate-500">Pearl</div>
+                <div class="text-3xl font-black mt-2 text-[#cc7d00]">₹ 3,920</div>
+              </div>
+              <div class="rounded-2xl bg-[#f4f8fb] border border-[#b9d4eb] p-4">
+                <div class="text-[10px] uppercase tracking-[0.22em] text-slate-500">Silver</div>
+                <div class="text-3xl font-black mt-2 text-[#2b5f8a]">₹ 1,980</div>
+              </div>
+            </div>
+            <div class="mt-4 rounded-2xl border border-[#e7d2a2] bg-gradient-to-r from-[#fff8ef] to-[#fffaf7] p-4 flex items-center justify-between gap-3">
+              <div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">Live valuation</div>
+                <div class="font-display text-xl text-[#5c0a14]">Premium Heritage</div>
+              </div>
+              <div class="text-3xl text-[#ff9933]">₹</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-6 pearl-card rounded-[28px] p-4 md:p-5">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <div class="flex flex-wrap items-center gap-3">
+              <button class="gender-btn px-4 py-2 rounded-full border border-[#d5b77e] bg-[#fdf6ec] text-[#5c0a14] text-sm font-bold active">All Gender</button>
+              <button class="gender-btn px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-700 text-sm font-medium" data-gender="Women">Women</button>
+              <button class="gender-btn px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-700 text-sm font-medium" data-gender="Men">Men</button>
+              <button class="gender-btn px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-700 text-sm font-medium" data-gender="Kids">Kids</button>
+            </div>
+            <div class="flex items-center gap-3">
+              <label class="text-sm font-semibold text-slate-600">Language</label>
+              <select id="languageSelect" class="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none">
+                <option value="EN">EN</option>
+                <option value="HI">HI</option>
+              </select>
+              <button id="pwaInstallBtn" class="hidden rounded-full border border-[#0a5c36] bg-[#eaf5ee] text-[#0a5c36] px-4 py-2 text-sm font-semibold">Install App</button>
+              <button id="pwaUpdateBtn" class="hidden rounded-full border border-[#5c0a14] bg-[#fff5f5] text-[#5c0a14] px-4 py-2 text-sm font-semibold">Update App</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-6">
+          <div class="flex justify-between items-center mb-4 px-1">
+            <div>
+              <div class="text-[10px] uppercase tracking-[0.25em] text-slate-500">Jewellery gallery</div>
+              <h2 class="font-display text-3xl text-[#5c0a14]">Handpicked Collections</h2>
+            </div>
+            <div class="text-sm font-semibold text-slate-600">Shown <span id="shownCounter" class="font-black text-[#0a5c36]">18</span> / <span id="totalCounter">10000</span></div>
+          </div>
+
+          <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5"></div>
+        </section>
+
+        <section id="premiumSection" class="mt-8 hidden">
+          <div class="flex items-center justify-between mb-4 px-1">
+            <div>
+              <div class="text-[10px] uppercase tracking-[0.25em] text-slate-500">Premium</div>
+              <h2 class="font-display text-3xl text-[#5c0a14]">Luxury Signature Pieces</h2>
+            </div>
+          </div>
+          <div id="premiumGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="trayModal" class="fixed inset-0 z-50 hidden bg-slate-900/45 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="w-full max-w-4xl rounded-[28px] pearl-card overflow-hidden">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-[#e7d1b5] bg-[#fffaf2]">
+          <div>
+            <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">Cart</div>
+            <h3 class="font-display text-2xl text-[#5c0a14]">Ambe Cart</h3>
+          </div>
+          <button class="close-modal text-xl text-slate-600" data-target="trayModal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="p-6">
+          <div id="trayItems" class="space-y-4"></div>
+          <div class="mt-6 flex flex-col md:flex-row md:justify-between md:items-center gap-3 border-t border-[#eadac0] pt-5">
+            <div>
+              <div class="text-sm text-slate-500">Estimated total</div>
+              <div id="trayTotal" class="text-3xl font-black text-[#0a5c36]">₹ 0</div>
+            </div>
+            <div class="flex gap-3">
+              <button id="orderNowBtn" class="rounded-full bg-[#5c0a14] text-white px-5 py-3 font-bold text-sm uppercase tracking-[0.14em]">Order Now</button>
+              <button class="close-modal rounded-full border border-slate-200 bg-white px-5 py-3 font-bold text-sm uppercase tracking-[0.14em] text-slate-700" data-target="trayModal">Continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="profileModal" class="fixed inset-0 z-50 hidden bg-slate-900/45 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="w-full max-w-3xl rounded-[28px] pearl-card overflow-hidden">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-[#e7d1b5] bg-[#fffaf2]">
+          <div>
+            <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">Access Portal</div>
+            <h3 class="font-display text-2xl text-[#5c0a14]">Profile & Login</h3>
+          </div>
+          <button class="close-modal text-xl text-slate-600" data-target="profileModal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="p-6">
+          <div class="flex gap-2 mb-4">
+            <button class="tab-btn tab-active rounded-full px-4 py-2 text-sm font-bold border border-[#d5b77e] bg-[#fff9f1] text-[#5c0a14]" data-tab="customer">Customer</button>
+            <button class="tab-btn rounded-full px-4 py-2 text-sm font-bold border border-slate-200 bg-white text-slate-700" data-tab="vendor">Vendor</button>
+          </div>
+
+          <div id="customerPane" class="space-y-4">
+            <div class="grid md:grid-cols-2 gap-4">
+              <input id="custName" class="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="Full Name" />
+              <input id="custPincode" class="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="Pincode" />
+              <input id="custPhone" class="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="Contact Number" />
+              <input id="custPass" type="password" class="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="Password" />
+            </div>
+            <div class="flex gap-3 flex-wrap">
+              <button id="signupCustomer" class="rounded-full bg-[#5c0a14] text-white px-5 py-3 font-bold text-sm uppercase tracking-[0.14em]">Sign Up</button>
+              <button id="loginCustomer" class="rounded-full border border-slate-200 bg-white px-5 py-3 font-bold text-sm uppercase tracking-[0.14em] text-slate-700">Login</button>
+            </div>
+            <div id="customerResult" class="hidden rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-700 px-4 py-3 text-sm"></div>
+          </div>
+
+          <div id="vendorPane" class="hidden space-y-4">
+            <div class="grid md:grid-cols-2 gap-4">
+              <input id="vendorName" class="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="Full Name" />
+              <input id="vendorPincode" class="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="Pincode" />
+              <input id="vendorShop" class="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="Shop Name" />
+              <input id="vendorThana" class="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="Thana Kshetra" />
+              <input id="vendorPhone" class="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="Contact Number" />
+              <input id="vendorPass" type="password" class="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="Password" />
+            </div>
+            <div class="flex gap-3 flex-wrap">
+              <button id="signupVendor" class="rounded-full bg-[#0a5c36] text-white px-5 py-3 font-bold text-sm uppercase tracking-[0.14em]">Register Vendor</button>
+              <button id="loginVendor" class="rounded-full border border-slate-200 bg-white px-5 py-3 font-bold text-sm uppercase tracking-[0.14em] text-slate-700">Login</button>
+            </div>
+            <div id="vendorResult" class="hidden rounded-2xl border border-amber-200 bg-amber-50 text-amber-700 px-4 py-3 text-sm"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="ordersModal" class="fixed inset-0 z-50 hidden bg-slate-900/45 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="w-full max-w-5xl rounded-[28px] pearl-card overflow-hidden">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-[#e7d1b5] bg-[#fffaf2]">
+          <div>
+            <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">History</div>
+            <h3 id="ordersTitle" class="font-display text-2xl text-[#5c0a14]">Orders</h3>
+          </div>
+          <button class="close-modal text-xl text-slate-600" data-target="ordersModal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="ordersContent" class="p-6 max-h-[75vh] overflow-y-auto"></div>
+      </div>
+    </div>
+
+    <div id="adminModal" class="fixed inset-0 z-50 hidden bg-slate-900/45 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="w-full max-w-5xl rounded-[28px] pearl-card overflow-hidden">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-[#e7d1b5] bg-[#fffaf2]">
+          <div>
+            <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">Access</div>
+            <h3 class="font-display text-2xl text-[#5c0a14]">Admin Portal</h3>
+          </div>
+          <button class="close-modal text-xl text-slate-600" data-target="adminModal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="p-6">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-[#e7d1b5] bg-[#fffaf2] p-4">
+              <label class="text-xs uppercase tracking-[0.2em] text-slate-500">Admin phone or recovery code</label>
+              <div class="mt-3 flex gap-3">
+                <input id="adminAccessInput" class="flex-1 rounded-full border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="+919752286492 / MAA-AMBE-2025-SUPER" />
+                <button id="openAdminAccess" class="rounded-full bg-[#5c0a14] text-white px-4 py-3 font-bold text-sm uppercase">Unlock</button>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-[#e7d1b5] bg-[#fffaf2] p-4">
+              <div class="text-xs uppercase tracking-[0.2em] text-slate-500">Festive UI</div>
+              <div class="mt-3 grid grid-cols-2 gap-2">
+                <button class="theme-btn rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold" data-theme="maroon">Maroon</button>
+                <button class="theme-btn rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold" data-theme="emerald">Emerald</button>
+                <button class="theme-btn rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold" data-theme="saffron">Saffron</button>
+                <button class="theme-btn rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold" data-theme="cream">Cream</button>
+                <button class="theme-btn rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold" data-theme="white">White</button>
+                <button class="theme-btn rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold" data-theme="bluestone">Bluestone</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="adminBody" class="hidden mt-6 space-y-6">
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="rounded-2xl border border-[#e7d1b5] bg-[#fffaf2] p-4">
+                <div class="text-xs uppercase tracking-[0.2em] text-slate-500">Add new admin</div>
+                <div class="mt-3 flex gap-3">
+                  <input id="newAdminPhone" class="flex-1 rounded-full border border-slate-200 bg-white px-4 py-3 outline-none" placeholder="Phone number" />
+                  <button id="addAdminBtn" class="rounded-full bg-[#0a5c36] text-white px-4 py-3 font-bold text-sm uppercase">Add Admin</button>
+                </div>
+              </div>
+              <div class="rounded-2xl border border-[#e7d1b5] bg-[#fffaf2] p-4">
+                <div class="text-xs uppercase tracking-[0.2em] text-slate-500">Portal visibility</div>
+                <div class="mt-3 flex items-center justify-between gap-3">
+                  <span class="font-semibold text-slate-700">Vendor portal</span>
+                  <button id="vendorPortalToggle" class="rounded-full bg-slate-200 px-4 py-2 text-xs font-bold uppercase">OFF</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6">
+              <div class="rounded-2xl border border-[#e7d1b5] bg-[#fffaf2] p-4">
+                <div class="flex items-center justify-between">
+                  <div class="text-xs uppercase tracking-[0.2em] text-slate-500">Pending vendors</div>
+                  <button id="reloadPendingBtn" class="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold">Refresh</button>
+                </div>
+                <div id="pendingVendors" class="mt-4 space-y-3"></div>
+              </div>
+
+              <div class="rounded-2xl border border-[#e7d1b5] bg-[#fffaf2] p-4">
+                <div class="text-xs uppercase tracking-[0.2em] text-slate-500">Dashboard</div>
+                <div id="adminDashboard" class="mt-4 grid gap-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="fixed right-5 bottom-5 z-[100] hidden rounded-full bg-[#0a5c36] text-white px-4 py-2 text-sm font-semibold shadow-lg"></div>
+
+    <script>
+      const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
+      const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+      const __DATA_URI__ = 'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=900&q=80';
+
+      const $ = (sel) => document.querySelector(sel);
+      const $$ = (sel) => [...document.querySelectorAll(sel)];
+
+      const DEFAULT_SETTINGS = {
+        festive_theme: 'maroon',
+        auto_approve: false,
+        vendor_portal_visible: true,
+      };
+
+      const STORAGE_KEYS = {
+        customers: 'maa_customers',
+        vendors: 'maa_vendors',
+        admins: 'maa_admins',
+        catalogue: 'maa_catalogue',
+        orders: 'maa_orders',
+        payments: 'maa_payments',
+        tokens: 'maa_tokens',
+        wishlist: 'maa_wishlist',
+        tray: 'maa_tray',
+        settings: 'maa_settings',
+      };
+
+      const state = {
+        customers: [],
+        vendors: [],
+        admins: [],
+        catalogue: [],
+        orders: [],
+        payments: [],
+        tokens: [],
+        wishlist: [],
+        tray: [],
+        settings: { ...DEFAULT_SETTINGS },
+        currentUser: null,
+        currentView: { gender: 'All', category: 'all' },
+        shown: 18,
+        premiumShown: 0,
+      };
+
+      function loadJson(key, fallback) {
+        try {
+          const raw = localStorage.getItem(key);
+          if (!raw) return fallback;
+          return JSON.parse(raw);
+        } catch (e) {
+          return fallback;
+        }
+      }
+
+      function saveJson(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
+
+      function genID(prefix = 'ID') {
+        const random = Math.random().toString(36).slice(2, 8).toUpperCase();
+        const stamp = Date.now().toString(36).toUpperCase();
+        return `${prefix}-${stamp}-${random}`;
+      }
+
+      function toast(msg) {
+        const el = $('#toast');
+        el.textContent = msg;
+        el.classList.remove('hidden');
+        clearTimeout(window.toastTimer);
+        window.toastTimer = setTimeout(() => el.classList.add('hidden'), 2500);
+      }
+
+      function formatPrice(n) {
+        return `₹ ${Number(n || 0).toLocaleString('en-IN')}`;
+      }
+
+      function ensureDemoData() {
+        state.customers = loadJson(STORAGE_KEYS.customers, [
+          { permanent_id: 'MAA-CUST-1001', full_name: 'Aditi Sharma', pincode: '110001', contact: '+919876543210', role: 'customer', password_hash: 'demo123', approved: true, created_at: new Date().toISOString() }
+        ]);
+        state.vendors = loadJson(STORAGE_KEYS.vendors, [
+          { permanent_id: 'MAA-SWARN-1001', full_name: 'Rohit Verma', pincode: '110002', shop_name: 'Om Jewels', thana_kshetra: 'Saket', contact: '+919876543211', role: 'vendor', password_hash: 'demo123', approved: true, auto_approve: false, created_at: new Date().toISOString() }
+        ]);
+        state.admins = loadJson(STORAGE_KEYS.admins, [
+          { permanent_id: 'MAA-ADMIN-1', phone: '+919752286492', full_name: 'Super Admin', role: 'super_admin', recovery_code: 'MAA-AMBE-2025-SUPER' }
+        ]);
+        state.settings = { ...DEFAULT_SETTINGS, ...loadJson(STORAGE_KEYS.settings, {}) };
+        state.wishlist = loadJson(STORAGE_KEYS.wishlist, []);
+        state.tray = loadJson(STORAGE_KEYS.tray, []);
+        state.orders = loadJson(STORAGE_KEYS.orders, []);
+        state.payments = loadJson(STORAGE_KEYS.payments, []);
+        state.tokens = loadJson(STORAGE_KEYS.tokens, []);
+
+        const existingCatalogue = loadJson(STORAGE_KEYS.catalogue, null);
+        if (!existingCatalogue || !existingCatalogue.length) {
+          const categories = ['necklace','ring','nospin','earrings','belt','wedding','chain','bangle','mangalsutra','payal','diamond','gold','silver','pearl'];
+          const generated = [];
+          for (let i = 0; i < 140; i++) {
+            const cat = categories[i % categories.length];
+            const price = 5000 + i * 1200;
+            generated.push({
+              id: `JEW-${i + 1}`,
+              name: `${cat.charAt(0).toUpperCase() + cat.slice(1)} ${i + 1}`,
+              category: cat,
+              gender: ['Women','Men','Kids'][i % 3],
+              price,
+              image_url: `https://images.unsplash.com/photo-${(i % 7) === 0 ? '1617038220319-276d3cfab638' : '1523170335258-f5ed11844a49'}?auto=format&fit=crop&w=900&q=80`,
+              premium: price > 50000,
+              approved: true,
+              vendor_id: 'MAA-SWARN-1001',
+              description: 'Premium handcrafted jewellery piece',
+            });
+          }
+          state.catalogue = generated;
+          saveJson(STORAGE_KEYS.catalogue, state.catalogue);
+        } else {
+          state.catalogue = existingCatalogue;
+        }
+      }
+
+      function saveState() {
+        saveJson(STORAGE_KEYS.customers, state.customers);
+        saveJson(STORAGE_KEYS.vendors, state.vendors);
+        saveJson(STORAGE_KEYS.admins, state.admins);
+        saveJson(STORAGE_KEYS.catalogue, state.catalogue);
+        saveJson(STORAGE_KEYS.orders, state.orders);
+        saveJson(STORAGE_KEYS.payments, state.payments);
+        saveJson(STORAGE_KEYS.tokens, state.tokens);
+        saveJson(STORAGE_KEYS.wishlist, state.wishlist);
+        saveJson(STORAGE_KEYS.tray, state.tray);
+        saveJson(STORAGE_KEYS.settings, state.settings);
+      }
+
+      function setFestiveUI(theme) {
+        const themes = {
+          maroon: { label: 'Maroon Festive', header: 'festive-maroon' },
+          emerald: { label: 'Ekadashi Emerald', header: 'festive-emerald' },
+          saffron: { label: 'Dhanteras Saffron', header: 'festive-saffron' },
+          cream: { label: 'Diwali Cream', header: 'festive-cream' },
+          white: { label: 'Timeless White', header: 'festive-white' },
+          bluestone: { label: 'Bluestone Current', header: 'festive-bluestone' },
+        };
+        const chosen = themes[theme] || themes.maroon;
+        state.settings.festive_theme = theme;
+        $('#festiveHeader').className = `festive-header festive-header ${chosen.header} text-white shadow-md sticky top-0 z-40`;
+        $('#festiveText').textContent = chosen.label;
+        saveState();
+      }
+
+      function setPermanentUI() {
+        state.settings.festive_theme = 'permanent';
+        $('#festiveHeader').className = 'festive-header text-white shadow-md sticky top-0 z-40';
+        $('#festiveText').textContent = 'Timeless Jewellery';
+        saveState();
+      }
+
+      function renderProducts() {
+        const { category, gender } = state.currentView;
+        let filtered = [...state.catalogue];
+
+        if (category !== 'all') filtered = filtered.filter(item => item.category === category);
+        if (gender !== 'All') filtered = filtered.filter(item => item.gender === gender || item.gender === 'Women' || item.gender === 'Men' || item.gender === 'Kids');
+
+        const premiumItems = filtered.filter(item => item.premium);
+        const visibleItems = filtered.slice(0, state.shown);
+
+        const productHtml = visibleItems.map((item) => {
+          const inWish = state.wishlist.includes(item.id);
+          const inTray = state.tray.find(t => t.id === item.id);
+          return `
+            <article class="product-card group relative overflow-hidden rounded-[28px] pearl-card border border-[#f0e0c8]">
+              <div class="relative h-64 overflow-hidden">
+                <img src="${item.image_url || __DATA_URI__}" alt="${item.name}" class="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#3b120f]/35 via-transparent to-transparent"></div>
+                ${item.premium ? '<div class="absolute left-3 top-3 premium-tag rounded-full px-2 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-white">Premium</div>' : ''}
+                <button class="wishlist-btn absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/70 bg-white/80 text-lg shadow-md ${inWish ? 'text-[#5c0a14]' : 'text-slate-600'}" data-id="${item.id}"><i class="${inWish ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i></button>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">${item.category}</div>
+                  <div class="text-xs font-bold text-[#0a5c36]">${item.gender}</div>
+                </div>
+                <h3 class="mt-2 font-display text-xl text-[#5c0a14]">${item.name}</h3>
+                <div class="mt-3 flex items-center justify-between">
+                  <div class="text-lg font-black text-[#0a5c36]">${formatPrice(item.price)}</div>
+                  <button class="add-tray-btn rounded-full bg-[#5c0a14] px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white" data-id="${item.id}">${inTray ? 'Add Qty' : 'Add'}</button>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('') || '<div class="col-span-full rounded-2xl border border-dashed border-slate-300 bg-white/70 p-8 text-center text-slate-500">No jewellery in this collection yet.</div>';
+
+        $('#productsGrid').innerHTML = productHtml;
+        $('#shownCounter').textContent = String(Math.min(state.shown, filtered.length));
+        $('#totalCounter').textContent = String(filtered.length || 10000);
+
+        if (premiumItems.length) {
+          $('#premiumSection').classList.remove('hidden');
+          const premiumHtml = premiumItems.slice(0, 8).map(item => `
+            <div class="rounded-[24px] pearl-card border border-[#f0e0c8] p-3">
+              <img src="${item.image_url || __DATA_URI__}" alt="${item.name}" class="h-36 w-full rounded-2xl object-cover" />
+              <div class="mt-3 flex items-center justify-between">
+                <div>
+                  <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">${item.category}</div>
+                  <div class="font-display text-lg text-[#5c0a14] mt-1">${item.name}</div>
+                </div>
+                <div class="premium-tag rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-white">BIS</div>
+              </div>
+              <div class="mt-2 font-black text-[#0a5c36]">${formatPrice(item.price)}</div>
+            </div>
+          `).join('');
+          $('#premiumGrid').innerHTML = premiumHtml;
+        } else {
+          $('#premiumSection').classList.add('hidden');
+        }
+      }
+
+      function updateTrayCount() {
+        $('#trayCount').textContent = String(state.tray.reduce((sum, it) => sum + (it.qty || 1), 0));
+        $('#wishlistCount').textContent = String(state.wishlist.length || 0);
+        $('#wishlistCount').classList.toggle('hidden', !state.wishlist.length);
+        $('#trayCount').classList.toggle('hidden', !state.tray.reduce((sum, it) => sum + (it.qty || 1), 0));
+      }
+
+      function openTray() {
+        renderTray();
+        $('#trayModal').classList.remove('hidden');
+      }
+
+      function closeTray() {
+        $('#trayModal').classList.add('hidden');
+      }
+
+      function renderTray() {
+        const items = state.tray.map(entry => {
+          const item = state.catalogue.find(p => p.id === entry.id);
+          if (!item) return null;
+          const lineTotal = item.price * entry.qty;
+          return `
+            <div class="flex items-center gap-4 rounded-2xl border border-[#e8d9ba] bg-[#fffaf3] p-3">
+              <img src="${item.image_url || __DATA_URI__}" alt="${item.name}" class="h-20 w-20 rounded-2xl object-cover" />
+              <div class="flex-1">
+                <div class="font-display text-xl text-[#5c0a14]">${item.name}</div>
+                <div class="text-sm text-slate-600">${item.category}</div>
+                <div class="mt-1 font-black text-[#0a5c36]">${formatPrice(lineTotal)}</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <input type="number" min="1" value="${entry.qty}" class="qty-input w-16 rounded-full border border-slate-200 bg-white px-2 py-2 text-center" data-id="${item.id}" />
+                <button class="remove-tray-btn rounded-full bg-[#5c0a14] text-white px-3 py-2 text-xs font-bold uppercase" data-id="${item.id}">Remove</button>
+              </div>
+            </div>
+          `;
+        }).filter(Boolean).join('');
+
+        $('#trayItems').innerHTML = items || '<div class="rounded-2xl border border-dashed border-slate-300 bg-white/80 p-8 text-center text-slate-500">Tray is empty. Add jewellery to continue.</div>';
+        const total = state.tray.reduce((sum, entry) => {
+          const item = state.catalogue.find(p => p.id === entry.id);
+          return sum + ((item ? item.price : 0) * (entry.qty || 1));
+        }, 0);
+        $('#trayTotal').textContent = formatPrice(total);
+      }
+
+      function addWish(id) {
+        if (!state.wishlist.includes(id)) state.wishlist.push(id);
+        saveState();
+        renderProducts();
+        updateTrayCount();
+      }
+
+      function addTray(id) {
+        const entry = state.tray.find(item => item.id === id);
+        if (entry) entry.qty += 1;
+        else state.tray.push({ id, qty: 1 });
+        saveState();
+        renderProducts();
+        updateTrayCount();
+      }
+
+      function updateQtyFromInput(id, qty) {
+        const safeQty = Number(qty) > 0 ? Number(qty) : 1;
+        const entry = state.tray.find(item => item.id === id);
+        if (entry) entry.qty = safeQty;
+        saveState();
+        renderTray();
+        updateTrayCount();
+      }
+
+      function removeTray(id) {
+        state.tray = state.tray.filter(item => item.id !== id);
+        saveState();
+        renderTray();
+        updateTrayCount();
+      }
+
+      function openProfile() {
+        $('#profileModal').classList.remove('hidden');
+      }
+
+      function closeProfile() {
+        $('#profileModal').classList.add('hidden');
+      }
+
+      function setAuthTab(tab) {
+        $('.tab-btn.tab-active')?.classList.remove('tab-active');
+        document.querySelector(`[data-tab="${tab}"]`)?.classList.add('tab-active');
+        $('#customerPane').classList.toggle('hidden', tab !== 'customer');
+        $('#vendorPane').classList.toggle('hidden', tab !== 'vendor');
+      }
+
+      function computeUserId() {
+        return state.currentUser ? state.currentUser.permanent_id || state.currentUser.id : null;
+      }
+
+      function setCurrentUser(user, role) {
+        state.currentUser = user;
+        const label = user ? user.full_name || user.shop_name || user.permanent_id : 'Guest';
+        $('#profileBtn').textContent = label;
+        $('#profileBtn').classList.add('max-w-[220px]','truncate');
+        saveState();
+      }
+
+      function signupCustomer() {
+        const fullName = $('#custName').value.trim();
+        const pincode = $('#custPincode').value.trim();
+        const phone = $('#custPhone').value.trim();
+        const pass = $('#custPass').value.trim();
+
+        if (!fullName || !pincode || !phone || !pass) {
+          toast('Fill all customer details');
+          return;
+        }
+
+        const permanent_id = `MAA-CUST-${Math.floor(1000 + Math.random() * 9000)}`;
+        const user = {
+          permanent_id,
+          full_name: fullName,
+          pincode,
+          contact: phone,
+          role: 'customer',
+          password_hash: pass,
+          approved: true,
+          created_at: new Date().toISOString(),
+        };
+        state.customers.push(user);
+        setCurrentUser(user, 'customer');
+        $('#customerResult').textContent = `Customer signup successful. Your ID: ${permanent_id}`;
+        $('#customerResult').classList.remove('hidden');
+        saveState();
+        toast('Customer signup successful');
+      }
+
+      function loginCustomer() {
+        const phone = $('#custPhone').value.trim();
+        const pass = $('#custPass').value.trim();
+        const user = state.customers.find(item => item.contact === phone && item.password_hash === pass);
+        if (!user) {
+          toast('Customer not found');
+          return;
+        }
+        setCurrentUser(user, 'customer');
+        $('#customerResult').textContent = `Logged in as ${user.full_name} (${user.permanent_id})`;
+        $('#customerResult').classList.remove('hidden');
+        closeProfile();
+        renderDashboards();
+        toast('Customer login succeeded');
+      }
+
+      function signupVendor() {
+        const fullName = $('#vendorName').value.trim();
+        const pincode = $('#vendorPincode').value.trim();
+        const shop = $('#vendorShop').value.trim();
+        const thana = $('#vendorThana').value.trim();
+        const phone = $('#vendorPhone').value.trim();
+        const pass = $('#vendorPass').value.trim();
+
+        if (!fullName || !pincode || !shop || !thana || !phone || !pass) {
+          toast('Fill all vendor details');
+          return;
+        }
+
+        const permanent_id = `MAA-SWARN-${Math.floor(1000 + Math.random() * 9000)}`;
+        const user = {
+          permanent_id,
+          full_name: fullName,
+          pincode,
+          shop_name: shop,
+          thana_kshetra: thana,
+          contact: phone,
+          role: 'vendor',
+          password_hash: pass,
+          approved: false,
+          auto_approve: false,
+          created_at: new Date().toISOString(),
+        };
+        state.vendors.push(user);
+        setCurrentUser(user, 'vendor');
+        $('#vendorResult').textContent = `Vendor request submitted. ID: ${permanent_id}. Waiting admin approval.`;
+        $('#vendorResult').classList.remove('hidden');
+        saveState();
+        toast('Vendor request submitted');
+      }
+
+      function loginVendor() {
+        const phone = $('#vendorPhone').value.trim();
+        const pass = $('#vendorPass').value.trim();
+        const user = state.vendors.find(item => item.contact === phone && item.password_hash === pass);
+        if (!user) {
+          toast('Vendor not found');
+          return;
+        }
+        if (!user.approved) {
+          toast('Vendor is awaiting approval');
+          return;
+        }
+        setCurrentUser(user, 'vendor');
+        $('#vendorResult').textContent = `Logged in as ${user.shop_name}`;
+        $('#vendorResult').classList.remove('hidden');
+        closeProfile();
+        renderDashboards();
+        toast('Vendor login succeeded');
+      }
+
+      function authIsAdminByPhone(phone) {
+        return !!state.admins.find(item => item.phone === phone || item.recovery_code === phone || item.phone === `+${phone}`);
+      }
+
+      function unlockAdmin() {
+        const value = $('#adminAccessInput').value.trim();
+        if (!value) {
+          toast('Enter admin phone or recovery code');
+          return;
+        }
+        const isValid = authIsAdminByPhone(value) || value === 'MAA-AMBE-2025-SUPER' || state.admins.some(a => a.phone === value.replace(/^\+/, ''));
+        if (!isValid) {
+          toast('Not admin / invalid access');
+          return;
+        }
+        $('#adminBody').classList.remove('hidden');
+        $('#adminModal').classList.remove('hidden');
+        renderPending();
+        renderAdminDashboard();
+      }
+
+      function renderPending() {
+        const pending = state.vendors.filter(v => !v.approved);
+        if (!pending.length) {
+          $('#pendingVendors').innerHTML = '<div class="text-sm text-slate-500">No pending vendor requests.</div>';
+          return;
+        }
+        $('#pendingVendors').innerHTML = pending.map(v => `
+          <div class="rounded-2xl border border-[#e9dcae] bg-white p-3">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <div class="font-bold text-[#5c0a14]">${v.full_name}</div>
+                <div class="text-xs text-slate-500">${v.shop_name} • ${v.thana_kshetra}</div>
+              </div>
+              <button class="approve-vendor-btn rounded-full bg-[#0a5c36] px-3 py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-white" data-id="${v.permanent_id}">Approve</button>
+            </div>
+            <div class="mt-2 text-xs text-slate-500">ID: ${v.permanent_id} • ${v.contact}</div>
+          </div>
+        `).join('');
+      }
+
+      function renderAdminDashboard() {
+        const cards = [
+          { title: 'Customers', value: state.customers.length },
+          { title: 'Vendors', value: state.vendors.length },
+          { title: 'Orders', value: state.orders.length },
+          { title: 'Tokens', value: state.tokens.length },
+        ];
+        $('#adminDashboard').innerHTML = cards.map(card => `
+          <div class="rounded-2xl border border-[#e8d7ae] bg-white p-4">
+            <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">${card.title}</div>
+            <div class="mt-2 text-3xl font-black text-[#5c0a14]">${card.value}</div>
+          </div>
+        `).join('');
+      }
+
+      function approveVendor(id) {
+        const vendor = state.vendors.find(v => v.permanent_id === id);
+        if (!vendor) return;
+        vendor.approved = true;
+        vendor.auto_approve = false;
+        saveState();
+        renderPending();
+        renderProducts();
+        toast(`Approved vendor ${vendor.permanent_id}`);
+      }
+
+      function placeOrder() {
+        if (!state.tray.length) {
+          toast('Tray empty');
+          return;
+        }
+        if (!state.currentUser || state.currentUser.role !== 'customer') {
+          toast('Login as customer to place order');
+          return;
+        }
+
+        const customerId = state.currentUser.permanent_id;
+        const orderItems = [...state.tray];
+        const total = orderItems.reduce((sum, entry) => {
+          const item = state.catalogue.find(p => p.id === entry.id);
+          return sum + (item ? item.price * entry.qty : 0);
+        }, 0);
+        const fivePercent = Math.floor(total * 0.05);
+        const commission = Math.floor(total * 0.01);
+        const txnId = `PHONEPE-${Date.now().toString(36).toUpperCase()}`;
+        const tokenCode = `AMBE-TOKEN-${Date.now().toString(36).toUpperCase()}`;
+
+        const order = {
+          id: genID('ORDER'),
+          token: tokenCode,
+          customer_id: customerId,
+          vendor_id: state.vendors[0]?.permanent_id || 'MAA-SWARN-DEFAULT',
+          jewellery: orderItems,
+          total,
+          five_percent: fivePercent,
+          commission_1_percent: commission,
+          status: state.settings.auto_approve ? 'approved' : 'pending',
+          phonepe_txn_id: txnId,
+          auto_approved: !!state.settings.auto_approve,
+          cancelled_by_customer: false,
+          finance_opted: false,
+          finance_months: 0,
+          created_at: new Date().toISOString(),
+        };
+
+        state.orders.push(order);
+        state.payments.push({
+          id: genID('PAY'),
+          order_id: order.id,
+          customer_id: customerId,
+          amount: fivePercent,
+          method: 'phonepe',
+          phonepe_response: txnId,
+          status: 'paid',
+          created_at: new Date().toISOString(),
+        });
+        state.tokens.push({
+          id: genID('TOKEN'),
+          token_code: tokenCode,
+          order_id: order.id,
+          customer_id: customerId,
+          customer_phone: state.currentUser.contact,
+          vendor_id: order.vendor_id,
+          verified_in_store: false,
+          full_payment_done: false,
+          created_at: new Date().toISOString(),
+          status: 'pending',
+        });
+
+        state.tray = [];
+        saveState();
+        renderTray();
+        updateTrayCount();
+        renderDashboards();
+        $('#trayModal').classList.add('hidden');
+        toast(`Order placed. Token ${tokenCode}`);
+      }
+
+      function renderOrdersViewer(title, list) {
+        if (!list.length) {
+          $('#ordersContent').innerHTML = '<div class="rounded-2xl border border-dashed border-slate-300 bg-white/80 p-8 text-center text-slate-500">No orders available right now.</div>';
+          return;
+        }
+        $('#ordersContent').innerHTML = list.map(item => `
+          <div class="rounded-2xl border border-[#e7d1b5] bg-[#fffaf3] p-4 mb-3">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-2 border-b border-[#eace9f]">
+              <div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">Token</div>
+                <div class="font-display text-xl text-[#5c0a14]">${item.token || item.token_code || 'N/A'}</div>
+              </div>
+              <div class="text-sm font-bold text-slate-600">Status: <span class="${getStatusColor(item.status)}">${item.status}</span></div>
+            </div>
+            <div class="mt-3 grid md:grid-cols-3 gap-3 text-sm text-slate-700">
+              <div><span class="font-bold text-[#0a5c36]">Total:</span> ${formatPrice(item.total || 0)}</div>
+              <div><span class="font-bold text-[#0a5c36]">5%:</span> ${formatPrice(item.five_percent || 0)}</div>
+              <div><span class="font-bold text-[#0a5c36]">Txn:</span> ${item.phonepe_txn_id || 'N/A'}</div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      function getStatusColor(status) {
+        const map = {
+          pending: 'text-amber-700',
+          approved: 'text-emerald-700',
+          rejected: 'text-red-700',
+          cancelled_by_customer: 'text-red-700',
+          shipped: 'text-blue-700',
+        };
+        return map[status] || 'text-slate-700';
+      }
+
+      function renderDashboards() {
+        const customerOrders = state.orders.filter(order => order.customer_id === (state.currentUser?.permanent_id || ''));
+        const vendorOrders = state.orders.filter(order => order.vendor_id === (state.currentUser?.permanent_id || ''));
+        const dashboard = document.getElementById('ordersDashboard') || document.createElement('div');
+        dashboard.id = 'ordersDashboard';
+        dashboard.className = 'mt-6';
+        dashboard.innerHTML = `
+          <div class="grid md:grid-cols-3 gap-3">
+            <div class="rounded-2xl border border-[#e5d7b7] bg-white p-4">
+              <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">My Orders</div>
+              <div class="mt-2 text-3xl font-black text-[#5c0a14]">${customerOrders.length}</div>
+            </div>
+            <div class="rounded-2xl border border-[#e5d7b7] bg-white p-4">
+              <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">Pending</div>
+              <div class="mt-2 text-3xl font-black text-[#ff9933]">${state.orders.filter(o => o.status === 'pending').length}</div>
+            </div>
+            <div class="rounded-2xl border border-[#e5d7b7] bg-white p-4">
+              <div class="text-[10px] uppercase tracking-[0.2em] text-slate-500">Approved</div>
+              <div class="mt-2 text-3xl font-black text-[#0a5c36]">${state.orders.filter(o => o.status === 'approved').length}</div>
+            </div>
+          </div>
+        `;
+        if (!document.getElementById('ordersDashboard')) {
+          document.body.appendChild(dashboard);
+        }
+      }
+
+      function openCustomerOrders() {
+        const items = state.orders.filter(order => order.customer_id === (state.currentUser?.permanent_id || ''));
+        renderOrdersViewer('Customer Orders', items);
+        $('#ordersModal').classList.remove('hidden');
+        $('#ordersTitle').textContent = 'Customer Orders';
+      }
+
+      function openVendorOrders() {
+        const items = state.orders.filter(order => order.vendor_id === (state.currentUser?.permanent_id || ''));
+        renderOrdersViewer('Vendor Orders', items);
+        $('#ordersModal').classList.remove('hidden');
+        $('#ordersTitle').textContent = 'Vendor Orders';
+      }
+
+      function cancelCustomerOrder(tokenCode) {
+        const entry = state.orders.find(order => order.token === tokenCode);
+        if (!entry) return;
+        if (entry.status !== 'pending') {
+          toast('Order not pending');
+          return;
+        }
+        entry.status = 'cancelled_by_customer';
+        entry.cancelled_by_customer = true;
+        saveState();
+        renderOrdersViewer('Customer Orders', state.orders.filter(order => order.customer_id === (state.currentUser?.permanent_id || '')));
+        renderDashboards();
+        toast('Order cancelled and refund initiated');
+      }
+
+      function approveVendorOrder(tokenCode) {
+        const entry = state.orders.find(order => order.token === tokenCode);
+        if (!entry) return;
+        if (entry.status !== 'pending') {
+          toast('Order already processed');
+          return;
+        }
+        entry.status = 'approved';
+        saveState();
+        renderOrdersViewer('Vendor Orders', state.orders.filter(order => order.vendor_id === (state.currentUser?.permanent_id || '')));
+        toast('Vendor approved order');
+      }
+
+      function rejectVendorOrder(tokenCode) {
+        const entry = state.orders.find(order => order.token === tokenCode);
+        if (!entry) return;
+        if (entry.status !== 'pending') {
+          toast('Order already processed');
+          return;
+        }
+        entry.status = 'rejected';
+        saveState();
+        renderOrdersViewer('Vendor Orders', state.orders.filter(order => order.vendor_id === (state.currentUser?.permanent_id || '')));
+        toast('Vendor rejected order and refund triggered');
+      }
+
+      function addNewAdmin(phone) {
+        if (!phone) return;
+        if (!state.admins.some(admin => admin.phone === phone)) {
+          state.admins.push({ permanent_id: genID('ADMIN'), phone, full_name: 'New Admin', role: 'admin', recovery_code: 'AUTO-' + Date.now().toString(36).toUpperCase() });
+          saveState();
+          toast('Admin added');
+        }
+      }
+
+      function updateThemeButtons() {
+        $$('.theme-btn').forEach(btn => {
+          btn.classList.toggle('bg-[#5c0a14]', btn.dataset.theme === state.settings.festive_theme);
+          btn.classList.toggle('text-white', btn.dataset.theme === state.settings.festive_theme);
+        });
+      }
+
+      function toggleVendorPortal() {
+        state.settings.vendor_portal_visible = !state.settings.vendor_portal_visible;
+        $('#vendorPortalToggle').textContent = state.settings.vendor_portal_visible ? 'ON' : 'OFF';
+        $('#vendorPortalToggle').classList.toggle('bg-[#0a5c36]', state.settings.vendor_portal_visible);
+        $('#vendorPortalToggle').classList.toggle('text-white', state.settings.vendor_portal_visible);
+        $('#vendorPortalToggle').classList.toggle('bg-slate-200', !state.settings.vendor_portal_visible);
+        saveState();
+      }
+
+      document.addEventListener('click', (event) => {
+        const target = event.target.closest('[data-target]');
+        if (target && target.dataset.target) {
+          const modal = document.getElementById(target.dataset.target);
+          modal && modal.classList.add('hidden');
+        }
+
+        if (event.target.closest('.close-modal')) {
+          const m = event.target.closest('.close-modal').dataset.target;
+          document.getElementById(m)?.classList.add('hidden');
+        }
+
+        if (event.target.closest('.category-btn')) {
+          const btn = event.target.closest('.category-btn');
+          document.querySelectorAll('.category-btn').forEach(el => el.classList.remove('active','bg-white','text-[#5c0a14]'));
+          btn.classList.add('active','bg-white','text-[#5c0a14]');
+          state.currentView.category = btn.dataset.cat || 'all';
+          state.shown = 18;
+          renderProducts();
+        }
+
+        if (event.target.closest('.gender-btn')) {
+          const btn = event.target.closest('.gender-btn');
+          document.querySelectorAll('.gender-btn').forEach(el => el.classList.remove('active','bg-[#fdf6ec]','text-[#5c0a14]','font-bold'));
+          btn.classList.add('active','bg-[#fdf6ec]','text-[#5c0a14]','font-bold');
+          state.currentView.gender = btn.dataset.gender || 'All';
+          state.shown = 18;
+          renderProducts();
+        }
+
+        if (event.target.closest('.wishlist-btn')) {
+          const id = event.target.closest('.wishlist-btn').dataset.id;
+          addWish(id);
+        }
+
+        if (event.target.closest('.add-tray-btn')) {
+          const id = event.target.closest('.add-tray-btn').dataset.id;
+          addTray(id);
+          openTray();
+        }
+
+        if (event.target.closest('.remove-tray-btn')) {
+          const id = event.target.closest('.remove-tray-btn').dataset.id;
+          removeTray(id);
+        }
+
+        if (event.target.closest('.approve-vendor-btn')) {
+          const id = event.target.closest('.approve-vendor-btn').dataset.id;
+          approveVendor(id);
+        }
+
+        if (event.target.closest('#profileBtn')) {
+          openProfile();
+        }
+
+        if (event.target.closest('#cartBtn')) {
+          openTray();
+        }
+
+        if (event.target.closest('#becomeVendorBtn')) {
+          openProfile();
+          setAuthTab('vendor');
+        }
+
+        if (event.target.closest('#customerBtn')) {
+          openProfile();
+          setAuthTab('customer');
+        }
+
+        if (event.target.closest('#orderNowBtn')) {
+          placeOrder();
+        }
+
+        if (event.target.closest('#openAdminAccess')) {
+          unlockAdmin();
+        }
+
+        if (event.target.closest('#addAdminBtn')) {
+          const phone = $('#newAdminPhone').value.trim();
+          addNewAdmin(phone);
+        }
+
+        if (event.target.closest('#vendorPortalToggle')) {
+          toggleVendorPortal();
+        }
+
+        if (event.target.closest('#logoTouch')) {
+          location.reload();
+        }
+
+        if (event.target.closest('#adminBtn')) {
+          $('#adminModal').classList.remove('hidden');
+        }
+
+        if (event.target.closest('#pwaInstallBtn')) {
+          if (window.deferredPrompt) {
+            window.deferredPrompt.prompt();
+            window.deferredPrompt.userChoice.then((choice) => {
+              if (choice.outcome === 'accepted') {
+                localStorage.setItem('pwa_installed', 'true');
+              }
+            });
+          }
+        }
+
+        if (event.target.closest('#pwaUpdateBtn')) {
+          if (navigator.serviceWorker) {
+            navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(reg => reg.update()));
+            toast('Checking for PWA update');
+          }
+        }
+
+        if (event.target.closest('.theme-btn')) {
+          const theme = event.target.closest('.theme-btn').dataset.theme;
+          setFestiveUI(theme);
+          updateThemeButtons();
+        }
+      });
+
+      document.addEventListener('input', (event) => {
+        if (event.target.matches('.qty-input')) {
+          const id = event.target.dataset.id;
+          updateQtyFromInput(id, event.target.value);
+        }
+      });
+
+      document.getElementById('signupCustomer').addEventListener('click', signupCustomer);
+      document.getElementById('loginCustomer').addEventListener('click', loginCustomer);
+      document.getElementById('signupVendor').addEventListener('click', signupVendor);
+      document.getElementById('loginVendor').addEventListener('click', loginVendor);
+      document.getElementById('reloadPendingBtn').addEventListener('click', renderPending);
+
+      function attachScrollHandler() {
+        window.addEventListener('scroll', () => {
+          const scrollBottom = window.innerHeight + window.scrollY;
+          const docHeight = document.body.offsetHeight;
+          if (scrollBottom >= docHeight - 400) {
+            state.shown += 18;
+            renderProducts();
+          }
+        });
+      }
+
+      function initPWA() {
+        window.addEventListener('beforeinstallprompt', (e) => {
+          e.preventDefault();
+          window.deferredPrompt = e;
+          $('#pwaInstallBtn').classList.remove('hidden');
+        });
+
+        if ('serviceWorker' in navigator) {
+          const swCode = `
+            self.addEventListener('install', event => {
+              self.skipWaiting();
+            });
+            self.addEventListener('activate', event => {
+              event.waitUntil(clients.claim());
+            });
+            self.addEventListener('fetch', event => {
+              if (event.request.method !== 'GET') return;
+              event.respondWith(fetch(event.request).catch(() => caches.match(event.request).then(r => r || Response.error())));
+            });
+          `;
+          const blob = new Blob([swCode], { type: 'text/javascript' });
+          const url = URL.createObjectURL(blob);
+          navigator.serviceWorker.register(url).catch(() => {});
+        }
+
+        if (localStorage.getItem('pwa_installed') === 'true') {
+          $('#pwaUpdateBtn').classList.remove('hidden');
+        }
+      }
+
+      function init() {
+        ensureDemoData();
+        setFestiveUI(state.settings.festive_theme || 'maroon');
+        updateThemeButtons();
+        renderProducts();
+        renderTray();
+        updateTrayCount();
+        attachScrollHandler();
+        initPWA();
+        renderAdminDashboard();
+      }
+
+      init();
+    </script>
+  </body>
+</html>
